@@ -26,8 +26,12 @@ function filterActiveUsers(users) {
  * @returns {string} - The log message.
  */
 function logAction(action, username) {
+    if (!action || !username) {
+        throw new Error('Both action and username are required');
+    }
     const timestamp = new Date().toISOString();
     return `User ${username} performed ${action} at ${timestamp}`;
 }
+
 
 module.exports = { capitalizeWords, filterActiveUsers, logAction };
